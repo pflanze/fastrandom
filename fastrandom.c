@@ -39,11 +39,21 @@ void initQ () {
 }
 
 
-int main () {
+void usage(char*prg) {
+    printf("usage: %s\n",prg);
+    printf("  write an endless stream of random bytes to stdout\n");
+    exit(1);
+}
+
+int main (int argc, char**argv) {
     unsigned long buf[BUFLEN];
     unsigned long mixin[2*BUFLEN];
     int mixin_start=BUFLEN;
     unsigned long v=0;
+
+    if (argc!=1) {
+	usage(argv[0]);
+    }
 
     init();
     initQ();//
