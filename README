@@ -1,0 +1,23 @@
+fastrandom - fast random source for (over)writing disk partitions/images
+
+Filling up the storage to be used as source for dmcrypt using the
+output from /dev/urandom can take a long time since the latter is
+quite slow. openssl rand is said to be a couple times faster, but I
+figured that I'd like something still faster than that, here's the
+result.
+
+It intends to be using complementary-multiply-with-carry by George
+Marsaglia [1], taking the code posted at [2], although on the latter
+page there has been discussion of not understanding that
+implementation. So, this is *ALPHA* code, don't rely on it...
+
+[1] http://en.wikipedia.org/wiki/Multiply-with-carry#Complementary-multiply-with-carry_generators
+[2] http://www.gamedev.net/topic/512260-number-generator-cmwc-4096-and-implementation/
+
+In an attempt to ensure even distribution even if the used algorithm
+is partially faulty, the program is mixing in some output from
+/dev/urandom into the result. This, too, may or may not actually be
+safe.
+
+The resulting program is fast enough for my purpose, it generates
+about 100MB/s output on an Atom D510 @ 1.66GHz.

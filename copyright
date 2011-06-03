@@ -1,0 +1,7 @@
+CMWC.c has been taken from
+http://www.gamedev.net/topic/512260-number-generator-cmwc-4096-and-implementation/
+and is assumed to be in the public domain.
+
+The rest of the program has been written by Christian Jaeger, who
+hereby places it into the public domain.
+
