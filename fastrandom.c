@@ -46,7 +46,7 @@ int main () {
     unsigned long v=0;
 
     init();
-    //    initQ();//
+    initQ();//
     while(1) {
 	{
 	    assert(mixin_start <= BUFLEN);
