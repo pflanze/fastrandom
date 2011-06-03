@@ -7,6 +7,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+#include <assert.h>
+
+
 #include "CMWC.c"
 
 #define BUFLEN 1024
@@ -38,14 +41,26 @@ void initQ () {
 
 int main () {
     unsigned long buf[BUFLEN];
+    unsigned long mixin[2*BUFLEN];
+    int mixin_start=BUFLEN;
 
     init();
-    initQ();
+    //initQ();//
     while(1) {
 	{
-	    int i;
+	    assert(mixin_start <= BUFLEN);
+	    if (mixin_start == BUFLEN) {
+		fprintf(stderr,"re-reading mixin\n");
+		readurandom(mixin,sizeof(mixin));
+		mixin_start=0;
+	    }
+	    mixin_start++;
+	}
+	{
+	    int i, mixin_i=mixin_start;
 	    for (i=0; i<BUFLEN; i++) {
-		buf[i]= CMWC();
+		buf[i]= CMWC() ^ mixin[mixin_i];
+		mixin_i++;
 	    }
 	}
 	{
