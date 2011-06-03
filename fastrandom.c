@@ -43,9 +43,10 @@ int main () {
     unsigned long buf[BUFLEN];
     unsigned long mixin[2*BUFLEN];
     int mixin_start=BUFLEN;
+    unsigned long v=0;
 
     init();
-    initQ();//
+    //    initQ();//
     while(1) {
 	{
 	    assert(mixin_start <= BUFLEN);
@@ -59,7 +60,8 @@ int main () {
 	{
 	    int i, mixin_i=mixin_start;
 	    for (i=0; i<BUFLEN; i++) {
-		buf[i]= CMWC() ^ mixin[mixin_i];
+		v= CMWC() ^ mixin[mixin_i] ^ v;
+		buf[i]= v;
 		mixin_i++;
 	    }
 	}
