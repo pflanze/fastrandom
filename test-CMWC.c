@@ -45,7 +45,7 @@ int main () {
     int mixin_start=BUFLEN;
 
     init();
-    //initQ();//
+    initQ();//
     while(1) {
 	{
 	    assert(mixin_start <= BUFLEN);
