@@ -50,7 +50,7 @@ int main () {
 	{
 	    assert(mixin_start <= BUFLEN);
 	    if (mixin_start == BUFLEN) {
-		fprintf(stderr,"re-reading mixin\n");
+		// fprintf(stderr,"re-reading mixin\n");
 		readurandom(mixin,sizeof(mixin));
 		mixin_start=0;
 	    }
