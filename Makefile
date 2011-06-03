@@ -1,3 +1,3 @@
-test-CMWC: test-CMWC.c CMWC.c
-	gcc -Wall -O3 -o test-CMWC test-CMWC.c
+fastrandom: fastrandom.c CMWC.c
+	gcc -Wall -O3 -o fastrandom fastrandom.c
 
