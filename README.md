@@ -10,11 +10,11 @@ Marsaglia](http://en.wikipedia.org/wiki/Multiply-with-carry#Complementary-multip
 taking code posted on
 [gamedev.net](http://www.gamedev.net/topic/512260-number-generator-cmwc-4096-and-implementation/).
 On the latter page there has been discussion of not understanding that
-implementation. So, don't rely on it producing unpredictable date,
-please. In an attempt to ensure even distribution even if the used
-algorithm is partially faulty, the program is mixing the result of the
-Marsaglia generator (or ripoff?) with some output from `/dev/urandom`
-(using bitwise XOR). This may be a moot exercise, though.
+implementation. So, don't rely on it producing unpredictable data. In
+an attempt to ensure even distribution even if the used algorithm is
+partially faulty, the program is mixing the result of the Marsaglia
+generator (or ripoff?) with some output from `/dev/urandom` (using
+bitwise XOR). This may be a moot exercise, though.
 
 At least the resulting program is fast enough for my purpose, it
 generates about 100MB/s on an Atom D510 @ 1.66GHz.
